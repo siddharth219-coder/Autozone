@@ -1,14 +1,13 @@
 
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { BASEURL } from "../service/api";
+import axiosClient, { BASEURL } from "../service/api";
 
 
 function Card({ search, refresh, onEdit, onDelete, darkMode }) {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    axios.get(BASEURL)
+    axiosClient.get('/cars')
       .then((res) => {
         setCars(res.data);
       })
