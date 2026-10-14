@@ -1,12 +1,14 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BASEURL } from "../service/api";
+
 
 function Card({ search, refresh, onEdit, onDelete, darkMode }) {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:7000/cars")
+    axios.get(BASEURL)
       .then((res) => {
         setCars(res.data);
       })
@@ -35,8 +37,8 @@ function Card({ search, refresh, onEdit, onDelete, darkMode }) {
           <div
             key={car.id}
             className={`rounded-xl overflow-hidden border transition-colors duration-300 ${darkMode
-                ? "bg-[#1D1E1A] border-[#39382F]"
-                : "bg-[#FBF9F4] border-[#DCD6C9]"
+              ? "bg-[#1D1E1A] border-[#39382F]"
+              : "bg-[#FBF9F4] border-[#DCD6C9]"
               }`}
           >
             <img
@@ -80,7 +82,7 @@ function Card({ search, refresh, onEdit, onDelete, darkMode }) {
                   type="button"
                   className="text-[#C6A96B] text-sm font-medium"
                 >
-                  
+
                 </button>
               </div>
 
@@ -97,8 +99,8 @@ function Card({ search, refresh, onEdit, onDelete, darkMode }) {
                   type="button"
                   onClick={() => onDelete(car.id)}
                   className={`flex-1 border py-2 rounded-md ${darkMode
-                      ? "border-[#55534A] text-[#B8B5AC] hover:bg-red-900/30"
-                      : "border-[#D7D0C4] text-[#77756D] hover:bg-[#FEE2E2]"
+                    ? "border-[#55534A] text-[#B8B5AC] hover:bg-red-900/30"
+                    : "border-[#D7D0C4] text-[#77756D] hover:bg-[#FEE2E2]"
                     }`}
                 >
                   Delete
