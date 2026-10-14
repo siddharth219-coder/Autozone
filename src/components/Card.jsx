@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import axiosClient, { BASEURL } from "../service/api";
+import axiosClient from "../service/api";
 
 
 function Card({ search, refresh, onEdit, onDelete, darkMode }) {
